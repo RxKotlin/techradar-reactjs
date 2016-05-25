@@ -56,7 +56,7 @@
     "phantomjs-prebuilt": "^2.0.0",
     "postcss": "^5.0.11",
     "postcss-loader": "^0.8.0",
-    "react-addons-test-utils": "^15.0.0",
+    "react-addons-test-utils": "^0.14.0",
     "react-canvas": "^1.1.0",
     "react-hot-loader": "^1.2.9",
     "rimraf": "^2.4.3",
