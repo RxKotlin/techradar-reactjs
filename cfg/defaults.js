@@ -38,9 +38,6 @@ function getDefaultModules() {
         test: /\.(mp4|ogg|svg)$/,
         loader: 'file-loader'
       }
-    ],
-    postLoaders: [
-      { loader: "transform?brfs" }
     ]
   };
 }
