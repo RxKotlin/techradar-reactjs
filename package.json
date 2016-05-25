@@ -57,6 +57,7 @@
     "postcss": "^5.0.11",
     "postcss-loader": "^0.8.0",
     "react-addons-test-utils": "^15.0.0",
+    "react-canvas": "^1.1.0",
     "react-hot-loader": "^1.2.9",
     "rimraf": "^2.4.3",
     "sass-loader": "^3.1.2",
@@ -69,7 +70,8 @@
   "dependencies": {
     "core-js": "^2.0.0",
     "normalize.css": "^4.0.0",
-    "react": "^15.0.0",
-    "react-dom": "^15.0.0"
+    "react": "^0.14.0",
+    "react-canvas": "^1.1.0",
+    "react-dom": "^0.14.0"
   }
 }
