@@ -3,6 +3,7 @@ require('styles/App.css');
 
 import React from 'react';
 import RadarItemListPageComponent from './page/RadarItemListPageComponent';
+import Radar from './svg/RadarComponent';
 
 class AppComponent extends React.Component {
   constructor() {
@@ -18,7 +19,7 @@ class AppComponent extends React.Component {
   render() {
     if (this.state.page == 'create') {
       return (
-        <div> Create </div>
+        <Radar />
       );
     }
 
