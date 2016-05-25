@@ -3,6 +3,10 @@ require('styles/App.css');
 
 import React from 'react';
 import RadarItemListPageComponent from './page/RadarItemListPageComponent';
+import ReactCanvas from 'react-canvas';
+
+var Surface = ReactCanvas.Surface;
+var Text = ReactCanvas.Text;
 
 class AppComponent extends React.Component {
   constructor() {
@@ -18,7 +22,11 @@ class AppComponent extends React.Component {
   render() {
     if (this.state.page == 'create') {
       return (
-        <div>create</div>
+        <Surface width={100} height={200} left={0} top={0}>
+          <Text style={{top:0, left:0, width:100, height:100, fontSize:12, color: '#FFFFFF'}}>
+            123
+          </Text>
+        </Surface>
       );
     }
 
