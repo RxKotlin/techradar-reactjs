@@ -19,7 +19,9 @@ class AppComponent extends React.Component {
   render() {
     if (this.state.page == 'create') {
       return (
-        <Radar />
+        <div className="radar">
+          <Radar radius={250} />
+        </div>
       );
     }
 
