@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import Point from './TriangleComponent';
 
 require('styles/svg/Radar.scss');
 
@@ -8,6 +9,7 @@ class RadarComponent extends React.Component {
   constructor(props) {
     super();
     this.radius = props.radius;
+    this.points = props.points;
   }
 
   render() {
@@ -18,6 +20,7 @@ class RadarComponent extends React.Component {
     let adoptR = radius * 0.3;
     let serviceTrackWidth = radius * 0.05;
     let serviceTrackOrigin = radius - serviceTrackWidth * 0.5;
+    let pointRadius = radius * 0.05
 
     return (
       <svg width={length} height={length} version="1.1"
@@ -31,6 +34,13 @@ stroke-width="2"/>
 stroke-width="2"/>
         <rect x={serviceTrackOrigin} y="0" width={serviceTrackWidth} height={length} fill="rgba(255, 255, 255, 0.5)" class="service-track"/>
         <rect x="0" y={serviceTrackOrigin} width={length} height={serviceTrackWidth} fill="rgba(255, 255, 255, 0.5)" class="service-track"/>
+        {
+          this.points
+            .map(function(item) {
+              return (<Point point={item} radius={pointRadius} />)
+            }
+          )
+        }
       </svg>
     );
   }
