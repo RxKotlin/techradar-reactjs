@@ -20,7 +20,7 @@ class AppComponent extends React.Component {
     if (this.state.page == 'create') {
       return (
         <div className="radar">
-          <Radar radius={250} points={[{x:20, y:20}, {x: 50, y:50}, {x: 80, y: 80}]} />
+          <Radar radius={250} points={[{x:120, y:120, type: 'old'}, {x: 150, y:50, type: 'old'}, {x: 180, y: 180, type: 'old'}, {x: 370, y: 380, type: 'new'}, {x: 330, y: 170, type: 'new'}]} />
         </div>
       );
     }
