@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Point from './TriangleComponent';
+import Circle from './CircleComponent';
 
 require('styles/svg/Radar.scss');
 
@@ -41,6 +42,7 @@ stroke-width="2"/>
             }
           )
         }
+        <Circle point={{x: 370,y: 380}} radius="10" />
       </svg>
     );
   }
