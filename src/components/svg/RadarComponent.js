@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import Point from './TriangleComponent';
+import Triangle from './TriangleComponent';
 import Circle from './CircleComponent';
 
 require('styles/svg/Radar.scss');
@@ -38,11 +38,13 @@ stroke-width="2"/>
         {
           this.points
             .map(function(item) {
-              return (<Point point={item} radius={pointRadius} />)
-            }
-          )
+              if (item.type == 'old') {
+                return (<Triangle point={item} radius={pointRadius} />)
+              } else {
+                return (<Circle point={item} radius={pointRadius} />)
+              }
+            })
         }
-        <Circle point={{x: 370,y: 380}} radius="10" />
       </svg>
     );
   }
