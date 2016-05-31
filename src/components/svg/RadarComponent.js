@@ -9,6 +9,7 @@ class RadarComponent extends React.Component {
   constructor(props) {
     super();
     this.radius = props.radius;
+    this.points = props.points;
   }
 
   render() {
@@ -19,6 +20,7 @@ class RadarComponent extends React.Component {
     let adoptR = radius * 0.3;
     let serviceTrackWidth = radius * 0.05;
     let serviceTrackOrigin = radius - serviceTrackWidth * 0.5;
+    let pointRadius = radius * 0.05
 
     return (
       <svg width={length} height={length} version="1.1"
@@ -33,18 +35,9 @@ stroke-width="2"/>
         <rect x={serviceTrackOrigin} y="0" width={serviceTrackWidth} height={length} fill="rgba(255, 255, 255, 0.5)" class="service-track"/>
         <rect x="0" y={serviceTrackOrigin} width={length} height={serviceTrackWidth} fill="rgba(255, 255, 255, 0.5)" class="service-track"/>
         {
-          [{x:20, y:20}, {x: 50, y:50}, {x: 80, y: 80}]
+          this.points
             .map(function(item) {
-              let r = 10;
-              let x1 = item.x;
-              let y1 = item.y - r;
-              let x2 = item.x - r * Math.sqrt(3) / 2;
-              let y2 = item.y - r / 2;
-              let x3 = item.x + r * Math.sqrt(3) / 2;
-              let y3 = item.y - r / 2;
-              let point = x1 + ',' + y1 + ' ' + x2 + ',' + y2 + ' ' + x3 + ',' + y3;
-              console.log(point);
-              return (<polygon points={point} fill="purple" stroke-width="1"/>)
+              return (<Point point={item} radius={pointRadius} />)
             }
           )
         }
