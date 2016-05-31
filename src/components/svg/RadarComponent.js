@@ -35,6 +35,10 @@ stroke-width="2"/>
 stroke-width="2"/>
         <rect x={serviceTrackOrigin} y="0" width={serviceTrackWidth} height={length} fill="rgba(255, 255, 255, 0.5)" class="service-track"/>
         <rect x="0" y={serviceTrackOrigin} width={length} height={serviceTrackWidth} fill="rgba(255, 255, 255, 0.5)" class="service-track"/>
+        <text x={length * 0.02} y={radius + 4} fill="black" fontSize="10px">HOLD</text>
+        <text x={length * 0.11} y={radius + 4} fill="black" fontSize="10px">ASSESS</text>
+        <text x={length * 0.255} y={radius + 4} fill="black" fontSize="10px">Trial</text>
+        <text x={length * 0.4} y={radius + 4} fill="black" fontSize="10px">ADOPT</text>
         {
           this.points
             .map(function(item) {
