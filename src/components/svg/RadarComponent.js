@@ -21,7 +21,12 @@ class RadarComponent extends React.Component {
     let adoptR = radius * 0.3;
     let serviceTrackWidth = radius * 0.05;
     let serviceTrackOrigin = radius - serviceTrackWidth * 0.5;
-    let pointRadius = radius * 0.05
+    let pointRadius = radius * 0.05;
+    let holdTextX = radius * 0.1;
+    let assessTextX = radius * 0.3;
+    let trialTextX = radius * 0.55;
+    let adoptTextX = radius * 0.85;
+    let labelFontSize = serviceTrackWidth * 0.8;
 
     return (
       <svg width={length} height={length} version="1.1"
@@ -34,11 +39,12 @@ stroke-width="2"/>
         <circle cx={radius} cy={radius} r={adoptR} fill="#C8C8C8" stroke="white"
 stroke-width="2"/>
         <rect x={serviceTrackOrigin} y="0" width={serviceTrackWidth} height={length} fill="rgba(255, 255, 255, 0.5)" class="service-track"/>
-        <rect x="0" y={serviceTrackOrigin} width={length} height={serviceTrackWidth} fill="rgba(255, 255, 255, 0.5)" class="service-track"/>
-        <text x={length * 0.02} y={radius + 4} fill="black" fontSize="10px">HOLD</text>
-        <text x={length * 0.11} y={radius + 4} fill="black" fontSize="10px">ASSESS</text>
-        <text x={length * 0.255} y={radius + 4} fill="black" fontSize="10px">Trial</text>
-        <text x={length * 0.4} y={radius + 4} fill="black" fontSize="10px">ADOPT</text>
+        <rect x="0" y={serviceTrackOrigin} width={length} height={serviceTrackWidth} fill="rgba(255, 255, 255, 0.5)" class="service-track">
+        </rect>
+        <text x={holdTextX} y={radius} fill="black" fontSize={labelFontSize} textAnchor="middle" dominantBaseline="central">HOLD</text>
+        <text x={assessTextX} y={radius} fill="black" fontSize={labelFontSize} textAnchor="middle" dominantBaseline="central">ASSESS</text>
+        <text x={trialTextX} y={radius} fill="black" fontSize={labelFontSize} textAnchor="middle" dominantBaseline="central">TRIAL</text>
+        <text x={adoptTextX} y={radius} fill="black" fontSize={labelFontSize} textAnchor="middle" dominantBaseline="central">ADOPT</text>
         {
           this.points
             .map(function(item) {
