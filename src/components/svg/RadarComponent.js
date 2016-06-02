@@ -31,20 +31,20 @@ class RadarComponent extends React.Component {
     return (
       <svg width={length} height={length} version="1.1"
 xmlns="http://www.w3.org/2000/svg">
-        <circle cx={radius} cy={radius} r={radius} fill="#E8E8E8"/>
-        <circle cx={radius} cy={radius} r={accessR} fill="#DEDEDE" stroke="white"
+        <circle cx={radius} cy={radius} r={radius} fill="#F5F5F5"/>
+        <circle cx={radius} cy={radius} r={accessR} fill="#EEEEEE" stroke="white"
 stroke-width="2"/>
-        <circle cx={radius} cy={radius} r={trialR} fill="#D3D3D3" stroke="white"
+        <circle cx={radius} cy={radius} r={trialR} fill="#E0E0E0" stroke="white"
 stroke-width="2"/>
-        <circle cx={radius} cy={radius} r={adoptR} fill="#C8C8C8" stroke="white"
+        <circle cx={radius} cy={radius} r={adoptR} fill="#BDBDBD" stroke="white"
 stroke-width="2"/>
         <rect x={serviceTrackOrigin} y="0" width={serviceTrackWidth} height={length} fill="rgba(255, 255, 255, 0.5)" class="service-track"/>
         <rect x="0" y={serviceTrackOrigin} width={length} height={serviceTrackWidth} fill="rgba(255, 255, 255, 0.5)" class="service-track">
         </rect>
-        <text x={holdTextX} y={radius} fill="black" fontSize={labelFontSize} textAnchor="middle" dominantBaseline="central">HOLD</text>
-        <text x={assessTextX} y={radius} fill="black" fontSize={labelFontSize} textAnchor="middle" dominantBaseline="central">ASSESS</text>
-        <text x={trialTextX} y={radius} fill="black" fontSize={labelFontSize} textAnchor="middle" dominantBaseline="central">TRIAL</text>
-        <text x={adoptTextX} y={radius} fill="black" fontSize={labelFontSize} textAnchor="middle" dominantBaseline="central">ADOPT</text>
+        <text x={holdTextX} y={radius} fill="#37474F" fontSize={labelFontSize} textAnchor="middle" dominantBaseline="central">HOLD</text>
+        <text x={assessTextX} y={radius} fill="#37474F" fontSize={labelFontSize} textAnchor="middle" dominantBaseline="central">ASSESS</text>
+        <text x={trialTextX} y={radius} fill="#37474F" fontSize={labelFontSize} textAnchor="middle" dominantBaseline="central">TRIAL</text>
+        <text x={adoptTextX} y={radius} fill="#37474F" fontSize={labelFontSize} textAnchor="middle" dominantBaseline="central">ADOPT</text>
         {
           this.points
             .map(function(item) {

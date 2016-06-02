@@ -16,7 +16,7 @@ class CircleComponent extends React.Component {
     let radius = this.radius;
 
     return (
-      <circle cx={point.x} cy={point.y} r={radius} fill="green" />
+      <circle cx={point.x} cy={point.y} r={radius} fill="#BA68C8" />
     );
   }
 }

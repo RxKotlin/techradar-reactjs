@@ -21,7 +21,7 @@ class TriangleComponent extends React.Component {
     let points = x3 + ',' + y3 + ' ' + x1 + ',' + y1 + ' ' + x2 + ',' + y2;
 
     return (
-      <polygon points={points} fill="purple" stroke-width="1"/>
+      <polygon points={points} fill="#4DD0E1" stroke-width="1"/>
     );
   }
 }
