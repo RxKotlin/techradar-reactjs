@@ -18,9 +18,16 @@ class AppComponent extends React.Component {
 
   render() {
     if (this.state.page == 'create') {
+      let a = [
+        {x: -0.5, y: 0.5, type: 'old'},
+        {x: 0.5, y: 0.5, type: 'old'},
+        {x: -0.5, y: -0.5, type: 'old'},
+        {x: 0.5, y: -0.5, type: 'new'}
+      ].map (this.cartesian2Screen);
       return (
         <div className="radar">
-          <Radar radius={250} points={[{x:120, y:120, type: 'old'}, {x: 150, y:50, type: 'old'}, {x: 180, y: 180, type: 'old'}, {x: 370, y: 380, type: 'new'}, {x: 330, y: 170, type: 'new'}]} />
+          <Radar radius={250}
+            points={a} />
         </div>
       );
     }
@@ -28,6 +35,14 @@ class AppComponent extends React.Component {
     return (
       <RadarItemListPageComponent onCreateRadar={this.navigateToRadarPage} />
     );
+  }
+
+  cartesian2Screen(point) {
+    return {
+      x: (1 + point.x) * 250,
+      y: (1 - point.y) * 250,
+      type: point.type
+    }
   }
 }
 
