@@ -10,7 +10,16 @@ class RadarComponent extends React.Component {
   constructor(props) {
     super();
     this.radius = props.radius;
-    this.points = props.points;
+    this.onCreatePoint = props.onCreatePoint;
+    this.state = {points: props.points}
+  }
+
+  onCreateANewPoint(event) {
+    let points = this.state.points;
+    let point = {type: 'new', x: event.nativeEvent.offsetX, y: event.nativeEvent.offsetY};
+    points.push(point);
+    this.setState({points: points});
+    this.onCreatePoint(point);
   }
 
   render() {
@@ -30,7 +39,7 @@ class RadarComponent extends React.Component {
 
     return (
       <svg width={length} height={length} version="1.1"
-xmlns="http://www.w3.org/2000/svg">
+xmlns="http://www.w3.org/2000/svg" onClick={this.onCreateANewPoint.bind(this)}>
         <circle cx={radius} cy={radius} r={radius} fill="#F5F5F5"/>
         <circle cx={radius} cy={radius} r={accessR} fill="#EEEEEE" stroke="white"
 stroke-width="2"/>
@@ -46,7 +55,7 @@ stroke-width="2"/>
         <text x={trialTextX} y={radius} fill="#37474F" fontSize={labelFontSize} textAnchor="middle" dominantBaseline="central">TRIAL</text>
         <text x={adoptTextX} y={radius} fill="#37474F" fontSize={labelFontSize} textAnchor="middle" dominantBaseline="central">ADOPT</text>
         {
-          this.points
+          this.state.points
             .map(function(item) {
               if (item.type == 'old') {
                 return (<Triangle point={item} radius={pointRadius} />)
