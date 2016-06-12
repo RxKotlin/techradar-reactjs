@@ -15,9 +15,20 @@ class RadarComponent extends React.Component {
   }
 
   onCreateANewPoint(event) {
+    let radius = this.radius;
+    let pointRadius = radius * 0.05;
     let points = this.state.points;
     let point = {type: 'new', x: event.nativeEvent.offsetX, y: event.nativeEvent.offsetY};
-    points.push(point);
+    let deletePoints = points.filter(function(item){
+      return (point.x >= item.x - pointRadius) && (point.x <= item.x + pointRadius) && (point.y >= item.y - pointRadius) && (point.y <= item.y + pointRadius)
+    });
+    if (deletePoints.length > 0) {
+      let index = points.indexOf(deletePoints[0]);
+      debugger;
+      points.splice(index, 1);
+    } else {
+      points.push(point);
+    }
     this.setState({points: points});
     this.onCreatePoint(point);
   }
