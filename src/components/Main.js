@@ -3,6 +3,7 @@ require('styles/App.css');
 
 import React from 'react';
 import RadarItemListPageComponent from './page/RadarItemListPageComponent';
+import RadarHomePageComponent from './page/RadarHomePageComponent';
 import Radar from './svg/RadarComponent';
 
 class AppComponent extends React.Component {
@@ -33,7 +34,7 @@ class AppComponent extends React.Component {
     }
 
     return (
-      <RadarItemListPageComponent onCreateRadar={this.navigateToRadarPage.bind(this)} />
+      <RadarHomePageComponent showRadar={this.navigateToRadarPage.bind(this)}/>
     );
   }
 
