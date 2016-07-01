@@ -68,6 +68,7 @@
     "core-js": "^2.0.0",
     "normalize.css": "^4.0.0",
     "react": "^15.0.0",
+    "react-bootstrap": "^0.29.4",
     "react-dom": "^15.0.0"
   }
 }
