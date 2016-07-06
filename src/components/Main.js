@@ -6,6 +6,8 @@ import RadarItemListPageComponent from './page/RadarItemListPageComponent';
 import RadarHomePageComponent from './page/RadarHomePageComponent';
 import Radar from './svg/RadarComponent';
 
+var UUID = require('uuid-js');
+
 class AppComponent extends React.Component {
   constructor() {
     super();
@@ -15,10 +17,10 @@ class AppComponent extends React.Component {
 
   navigateToRadarPage() {
     this.setState({page: 'create', margin: 60, radius: 250, arr:[
-        {x: -0.5, y: 0.5, type: 'old'},
-        {x: 0.5, y: 0.5, type: 'old'},
-        {x: -0.5, y: -0.5, type: 'old'},
-        {x: 0.5, y: -0.5, type: 'new'}
+        {x: -0.5, y: 0.5, type: 'old', id: UUID.create().toString()},
+        {x: 0.5, y: 0.5, type: 'old', id: UUID.create().toString()},
+        {x: -0.5, y: -0.5, type: 'old', id: UUID.create().toString()},
+        {x: 0.5, y: -0.5, type: 'new', id: UUID.create().toString()}
       ]});
   }
 
@@ -46,7 +48,8 @@ class AppComponent extends React.Component {
     return {
       x: (1 + point.x) * this.state.radius,
       y: (1 - point.y) * this.state.radius,
-      type: point.type
+      type: point.type,
+      id: point.id
     }
   }
 
@@ -54,7 +57,8 @@ class AppComponent extends React.Component {
     return {
       x: point.x / this.state.radius - 1,
       y: point.y / this.state.radius - 1,
-      type: point.type
+      type: point.type,
+      id: point.id
     }
   }
 }
