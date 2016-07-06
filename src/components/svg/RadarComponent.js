@@ -28,6 +28,9 @@ class RadarComponent extends React.Component {
       points.splice(index, 1);
     } else {
       let enterName = prompt("Enter a value");
+      if (enterName === null) {
+        return;
+      }
       point.name = enterName;
       points.push(point);
     }
