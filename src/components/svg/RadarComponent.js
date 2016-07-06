@@ -27,6 +27,8 @@ class RadarComponent extends React.Component {
       let index = points.indexOf(deletePoints[0]);
       points.splice(index, 1);
     } else {
+      let enterName = prompt("Enter a value");
+      point.name = enterName;
       points.push(point);
     }
     this.setState({points: points});
@@ -73,6 +75,13 @@ xmlns="http://www.w3.org/2000/svg" onClick={this.onCreateANewPoint.bind(this)}>
               } else {
                 return (<Circle point={item} radius={pointRadius} key={`${item.id}`}/>)
               }
+            })
+        }
+        {
+          this.state.points
+            .map(item => {
+              let index = this.state.points.indexOf(item) + 1;
+              return (<text x={item.x} y={item.y} fill="#FFFFFF" fontSize={12} textAnchor="middle" dominantBaseline="central">{index}</text>)
             })
         }
       </svg>

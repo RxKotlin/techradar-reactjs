@@ -17,10 +17,10 @@ class AppComponent extends React.Component {
 
   navigateToRadarPage() {
     this.setState({page: 'create', margin: 60, radius: 250, arr:[
-        {x: -0.5, y: 0.5, type: 'old', id: UUID.create().toString()},
-        {x: 0.5, y: 0.5, type: 'old', id: UUID.create().toString()},
-        {x: -0.5, y: -0.5, type: 'old', id: UUID.create().toString()},
-        {x: 0.5, y: -0.5, type: 'new', id: UUID.create().toString()}
+        {x: -0.5, y: 0.5, type: 'old', id: UUID.create().toString(), name: 'iOS'},
+        {x: 0.5, y: 0.5, type: 'old', id: UUID.create().toString(), name: 'Android'},
+        {x: -0.5, y: -0.5, type: 'old', id: UUID.create().toString(), name: 'Node'},
+        {x: 0.5, y: -0.5, type: 'new', id: UUID.create().toString(), name: 'Go'}
       ]});
   }
 
@@ -49,7 +49,8 @@ class AppComponent extends React.Component {
       x: (1 + point.x) * this.state.radius,
       y: (1 - point.y) * this.state.radius,
       type: point.type,
-      id: point.id
+      id: point.id,
+      name: point.name
     }
   }
 
@@ -58,7 +59,8 @@ class AppComponent extends React.Component {
       x: point.x / this.state.radius - 1,
       y: point.y / this.state.radius - 1,
       type: point.type,
-      id: point.id
+      id: point.id,
+      name: point.name
     }
   }
 }
