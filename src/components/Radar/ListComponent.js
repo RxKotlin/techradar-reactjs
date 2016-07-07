@@ -4,6 +4,8 @@ import React from 'react';
 
 require('styles/radar/List.scss');
 
+var UUID = require('uuid-js');
+
 class ListComponent extends React.Component {
 
   constructor(props) {

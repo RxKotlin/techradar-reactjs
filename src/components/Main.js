@@ -1,4 +1,4 @@
-require('normalize.css/normalize.css');
+// require('normalize.css/normalize.css');
 require('styles/App.css');
 
 import React from 'react';
@@ -6,6 +6,7 @@ import RadarItemListPageComponent from './page/RadarItemListPageComponent';
 import RadarHomePageComponent from './page/RadarHomePageComponent';
 import Radar from './svg/RadarComponent';
 import ListComponent from './Radar/ListComponent';
+import {Button, Image, Grid, Row, Col} from 'react-bootstrap';
 
 var UUID = require('uuid-js');
 
@@ -27,13 +28,43 @@ class AppComponent extends React.Component {
 
   render() {
     if (this.state.page == 'create') {
+      debugger;
+      let a1 = this.state.arr.filter((item) => {
+        return item.x > 0 && item.y > 0
+      }).map(this.cartesian2Screen.bind(this));
+      let a2 = this.state.arr.filter((item) => {
+        return item.x < 0 && item.y > 0
+      }).map(this.cartesian2Screen.bind(this));
+      let a3 = this.state.arr.filter((item) => {
+        return item.x < 0 && item.y < 0
+      }).map(this.cartesian2Screen.bind(this));
+      let a4 = this.state.arr.filter((item) => {
+        return item.x > 0 && item.y < 0
+      }).map(this.cartesian2Screen.bind(this));
       let a = this.state.arr.map (this.cartesian2Screen.bind(this));
       return (
-        <div>
-          <ListComponent points={a}/>
-          <div style={{'margin': this.state.margin}}>
-            <Radar radius={this.state.radius}
-              points={a} didChangedPoints={this.didChangedPoints.bind(this)}/>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-4">
+              <ListComponent points={a2} key={`${UUID.create().toString()}`}/>
+            </div>
+            <div className="col-md-4 col-md-offset-4">
+              <ListComponent points={a1} key={`${UUID.create().toString()}`}/>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-6 col-md-offset-1">
+              <Radar radius={this.state.radius}
+                points={a} didChangedPoints={this.didChangedPoints.bind(this)}/>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-4">
+              <ListComponent points={a3} key={`${UUID.create().toString()}`}/>
+            </div>
+            <div className="col-md-4 col-md-offset-4">
+              <ListComponent points={a4} key={`${UUID.create().toString()}`}/>
+            </div>
           </div>
         </div>
       );
@@ -62,7 +93,7 @@ class AppComponent extends React.Component {
   screen2Cartesian(point) {
     return {
       x: point.x / this.state.radius - 1,
-      y: point.y / this.state.radius - 1,
+      y: 1 - point.y / this.state.radius,
       type: point.type,
       id: point.id,
       name: point.name
