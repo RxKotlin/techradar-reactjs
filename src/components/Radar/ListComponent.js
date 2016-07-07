@@ -5,11 +5,23 @@ import React from 'react';
 require('styles/radar/List.scss');
 
 class ListComponent extends React.Component {
+
+  constructor(props) {
+    super();
+    this.state = {points: props.points}
+  }
+
   render() {
-    return ( < div className = "list-component" >
-      < ul >
-      < li > iOS < /li> < li > Android < /li> < li > HTML < /li> < li >
-      DevOps < /li> < /ul> < /div>
+    return (
+        <ul>
+        {
+          this.state.points
+            .map((item) => {
+              let index = this.state.points.indexOf(item) + 1;
+              return (<li>{index}. {item.name}</li>);
+            })
+        }
+        </ul>
     );
   }
 }

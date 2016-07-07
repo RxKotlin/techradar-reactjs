@@ -5,6 +5,7 @@ import React from 'react';
 import RadarItemListPageComponent from './page/RadarItemListPageComponent';
 import RadarHomePageComponent from './page/RadarHomePageComponent';
 import Radar from './svg/RadarComponent';
+import ListComponent from './Radar/ListComponent';
 
 var UUID = require('uuid-js');
 
@@ -28,9 +29,12 @@ class AppComponent extends React.Component {
     if (this.state.page == 'create') {
       let a = this.state.arr.map (this.cartesian2Screen.bind(this));
       return (
-        <div style={{'margin': this.state.margin}}>
-          <Radar radius={this.state.radius}
-            points={a} onCreatePoint={this.onCreatePoint.bind(this)}/>
+        <div>
+          <ListComponent points={a}/>
+          <div style={{'margin': this.state.margin}}>
+            <Radar radius={this.state.radius}
+              points={a} didChangedPoints={this.didChangedPoints.bind(this)}/>
+          </div>
         </div>
       );
     }
@@ -40,8 +44,9 @@ class AppComponent extends React.Component {
     );
   }
 
-  onCreatePoint(point) {
-    console.log(point);
+  didChangedPoints(points) {
+    let a = points.map (this.screen2Cartesian.bind(this));
+    this.setState({page: 'create', margin: 60, radius: 250, arr: a});
   }
 
   cartesian2Screen(point) {
