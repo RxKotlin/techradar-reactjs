@@ -11,7 +11,7 @@ class RadarComponent extends React.Component {
   constructor(props) {
     super();
     this.radius = props.radius;
-    this.onCreatePoint = props.onCreatePoint;
+    this.didChangedPoints = props.didChangedPoints;
     this.state = {points: props.points}
   }
 
@@ -35,7 +35,7 @@ class RadarComponent extends React.Component {
       points.push(point);
     }
     this.setState({points: points});
-    this.onCreatePoint(points);
+    this.didChangedPoints(points);
   }
 
   render() {
