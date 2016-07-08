@@ -84,7 +84,7 @@ xmlns="http://www.w3.org/2000/svg" onClick={this.onCreateANewPoint.bind(this)}>
           this.state.points
             .map(item => {
               let index = this.state.points.indexOf(item) + 1;
-              return (<text x={item.x} y={item.y} fill="#FFFFFF" fontSize={12} textAnchor="middle" dominantBaseline="central">{index}</text>)
+              return (<text x={item.x} y={item.y} fill="#FFFFFF" fontSize={pointRadius} textAnchor="middle" dominantBaseline="central">{index}</text>)
             })
         }
       </svg>
