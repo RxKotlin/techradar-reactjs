@@ -28,42 +28,43 @@ class AppComponent extends React.Component {
 
   render() {
     if (this.state.page == 'create') {
-      debugger;
-      let a1 = this.state.arr.filter((item) => {
+      let items = this.state.arr.map(this.points2Items.bind(this))
+
+      let items1st = items.filter((item) => {
         return item.x > 0 && item.y > 0
       }).map(this.cartesian2Screen.bind(this));
-      let a2 = this.state.arr.filter((item) => {
+      let items2nd = items.filter((item) => {
         return item.x < 0 && item.y > 0
       }).map(this.cartesian2Screen.bind(this));
-      let a3 = this.state.arr.filter((item) => {
+      let items3rd = items.filter((item) => {
         return item.x < 0 && item.y < 0
       }).map(this.cartesian2Screen.bind(this));
-      let a4 = this.state.arr.filter((item) => {
+      let items4th = items.filter((item) => {
         return item.x > 0 && item.y < 0
       }).map(this.cartesian2Screen.bind(this));
-      let a = this.state.arr.map (this.cartesian2Screen.bind(this));
+      let points = this.state.arr.map (this.cartesian2Screen.bind(this));
       return (
         <div className="container">
           <div className="row">
             <div className="col-md-4">
-              <ListComponent points={a2} key={`${UUID.create().toString()}`}/>
+              <ListComponent items={items2nd} key={`${UUID.create().toString()}`}/>
             </div>
             <div className="col-md-4 col-md-offset-4">
-              <ListComponent points={a1} key={`${UUID.create().toString()}`}/>
+              <ListComponent items={items1st} key={`${UUID.create().toString()}`}/>
             </div>
           </div>
           <div className="row">
             <div className="col-md-6 col-md-offset-1">
               <Radar radius={this.state.radius}
-                points={a} didChangedPoints={this.didChangedPoints.bind(this)}/>
+                points={points} didChangedPoints={this.didChangedPoints.bind(this)}/>
             </div>
           </div>
           <div className="row">
             <div className="col-md-4">
-              <ListComponent points={a3} key={`${UUID.create().toString()}`}/>
+              <ListComponent items={items3rd} key={`${UUID.create().toString()}`}/>
             </div>
             <div className="col-md-4 col-md-offset-4">
-              <ListComponent points={a4} key={`${UUID.create().toString()}`}/>
+              <ListComponent items={items4th} key={`${UUID.create().toString()}`}/>
             </div>
           </div>
         </div>
@@ -86,7 +87,8 @@ class AppComponent extends React.Component {
       y: (1 - point.y) * this.state.radius,
       type: point.type,
       id: point.id,
-      name: point.name
+      name: point.name,
+      index: point.index
     }
   }
 
@@ -96,8 +98,15 @@ class AppComponent extends React.Component {
       y: 1 - point.y / this.state.radius,
       type: point.type,
       id: point.id,
-      name: point.name
+      name: point.name,
+      index: point.index
     }
+  }
+
+  points2Items(point) {
+    let item = point;
+    item.index = this.state.arr.indexOf(item) + 1;
+    return item;
   }
 }
 

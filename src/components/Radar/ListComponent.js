@@ -10,17 +10,16 @@ class ListComponent extends React.Component {
 
   constructor(props) {
     super();
-    this.state = {points: props.points}
+    this.state = {items: props.items}
   }
 
   render() {
     return (
         <ul>
         {
-          this.state.points
+          this.state.items
             .map((item) => {
-              let index = this.state.points.indexOf(item) + 1;
-              return (<li>{index}. {item.name}</li>);
+              return (<li>{item.index}. {item.name}</li>);
             })
         }
         </ul>
