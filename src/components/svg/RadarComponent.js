@@ -17,9 +17,10 @@ class RadarComponent extends React.Component {
 
   onCreateANewPoint(event) {
     let radius = this.radius;
-    let pointRadius = radius * 0.05;
+    let pointRadius = 0.05;
     let points = this.state.points;
-    let point = {type: 'new', x: event.nativeEvent.offsetX, y: event.nativeEvent.offsetY, id: UUID.create().toString()};
+    var point = {type: 'new', x: event.nativeEvent.offsetX, y: event.nativeEvent.offsetY, id: UUID.create().toString()};
+    point = this.screen2Cartesian(point)
     let deletePoints = points.filter(function(item){
       return (point.x >= item.x - pointRadius) && (point.x <= item.x + pointRadius) && (point.y >= item.y - pointRadius) && (point.y <= item.y + pointRadius)
     });
@@ -36,6 +37,40 @@ class RadarComponent extends React.Component {
     }
     this.setState({points: points});
     this.didChangedPoints(points);
+  }
+
+  getColorByPoint(point) {
+    if (point.x > 0 && point.y > 0) {
+      return "#BA68C8"
+    } else if (point.x > 0 && point.y < 0) {
+      return "#2196F3"
+    } else if (point.x < 0 && point.y > 0) {
+      return "#FF8A80"
+    } else if (point.x < 0 && point.y < 0) {
+      return "#009688"
+    }
+  }
+
+  cartesian2Screen(point) {
+    return {
+      x: (1 + point.x) * this.radius,
+      y: (1 - point.y) * this.radius,
+      type: point.type,
+      id: point.id,
+      name: point.name,
+      index: point.index
+    }
+  }
+
+  screen2Cartesian(point) {
+    return {
+      x: point.x / this.radius - 1,
+      y: 1 - point.y / this.radius,
+      type: point.type,
+      id: point.id,
+      name: point.name,
+      index: point.index
+    }
   }
 
   render() {
@@ -72,19 +107,26 @@ xmlns="http://www.w3.org/2000/svg" onClick={this.onCreateANewPoint.bind(this)}>
         <text x={adoptTextX} y={radius} fill="#37474F" fontSize={labelFontSize} textAnchor="middle" dominantBaseline="central">ADOPT</text>
         {
           this.state.points
-            .map(function(item) {
+            .map(item => {
+              let point = this.cartesian2Screen(item);
+              let color = this.getColorByPoint(item);
               if (item.type == 'old') {
-                return (<Triangle point={item} radius={pointRadius} key={`${item.id}`}/>)
+                return (<Triangle point={point} radius={pointRadius} key={`${item.id}`} fillColor={color} />)
               } else {
-                return (<Circle point={item} radius={pointRadius} key={`${item.id}`}/>)
+
+                return (<Circle point={point} radius={pointRadius} key={`${item.id}`} fillColor={color} />)
               }
             })
         }
         {
-          this.state.points
+          this.state.points.map((item) => {
+            let item1 = item;
+            let index = this.state.points.indexOf(item) + 1;
+            item1.index = index;
+            return item1;
+          }).map((point) => {return this.cartesian2Screen(point)})
             .map(item => {
-              let index = this.state.points.indexOf(item) + 1;
-              return (<text x={item.x} y={item.y} fill="#FFFFFF" fontSize={pointRadius} textAnchor="middle" dominantBaseline="central">{index}</text>)
+              return (<text x={item.x} y={item.y} fill="#FFFFFF" fontSize={pointRadius} textAnchor="middle" dominantBaseline="central">{item.index}</text>)
             })
         }
       </svg>
