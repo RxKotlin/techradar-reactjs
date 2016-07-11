@@ -9,14 +9,15 @@ class CircleComponent extends React.Component {
     super();
     this.point = props.point;
     this.radius = props.radius;
+    this.fillColor = props.fillColor;
   }
 
   render() {
     let point = this.point;
     let radius = this.radius;
-
+    let fillColor = this.fillColor;
     return (
-      <circle cx={point.x} cy={point.y} r={radius} fill="#BA68C8" />
+      <circle cx={point.x} cy={point.y} r={radius} fill={fillColor} />
     );
   }
 }

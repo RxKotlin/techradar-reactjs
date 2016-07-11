@@ -9,6 +9,7 @@ class TriangleComponent extends React.Component {
     super();
     this.point = props.point;
     this.radius = props.radius;
+    this.fillColor = props.fillColor;
   }
   render() {
     let radius = this.radius;
@@ -19,9 +20,10 @@ class TriangleComponent extends React.Component {
     let x3 = this.point.x + radius * Math.sqrt(3) / 2;
     let y3 = this.point.y + radius / 2;
     let points = x3 + ',' + y3 + ' ' + x1 + ',' + y1 + ' ' + x2 + ',' + y2;
+    let fillColor = this.fillColor;
 
     return (
-      <polygon points={points} fill="#4DD0E1" stroke-width="1"/>
+      <polygon points={points} fill="#4DD0E1" stroke-width="1" fill={fillColor} />
     );
   }
 }
