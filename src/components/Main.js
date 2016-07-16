@@ -13,12 +13,12 @@ var UUID = require('uuid-js');
 class AppComponent extends React.Component {
   constructor() {
     super();
-    this.state = {page: 'list', radius: 500, arr: []};
+    this.state = {page: 'list', radius: 400, arr: []};
     this.screen2Cartesian = this.screen2Cartesian.bind(this);
   }
 
   navigateToRadarPage() {
-    this.setState({page: 'create', radius: 500, arr:[
+    this.setState({page: 'create', radius: 400, arr:[
         {x: -0.5, y: 0.5, type: 'old', id: UUID.create().toString(), name: 'iOS'},
         {x: 0.5, y: 0.5, type: 'old', id: UUID.create().toString(), name: 'Android'},
         {x: -0.5, y: -0.5, type: 'old', id: UUID.create().toString(), name: 'Node'},
