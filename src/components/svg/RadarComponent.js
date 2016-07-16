@@ -29,10 +29,12 @@ class RadarComponent extends React.Component {
       points.splice(index, 1);
     } else {
       let enterName = prompt("Enter a value");
+      let type = confirm('Is a new one?');
       if (enterName === null) {
         return;
       }
       point.name = enterName;
+      point.type = type ? 'new' : 'old';
       points.push(point);
     }
     this.setState({points: points});
