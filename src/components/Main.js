@@ -18,12 +18,7 @@ class AppComponent extends React.Component {
   }
 
   navigateToRadarPage() {
-    this.setState({page: 'create', radius: 400, arr:[
-        {x: -0.5, y: 0.5, type: 'old', id: UUID.create().toString(), name: 'iOS'},
-        {x: 0.5, y: 0.5, type: 'old', id: UUID.create().toString(), name: 'Android'},
-        {x: -0.5, y: -0.5, type: 'old', id: UUID.create().toString(), name: 'Node'},
-        {x: 0.5, y: -0.5, type: 'new', id: UUID.create().toString(), name: 'Go'}
-      ]});
+    this.setState({page: 'create', radius: 400, arr:[]});
   }
 
   render() {
