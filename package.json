@@ -67,9 +67,9 @@
   "dependencies": {
     "core-js": "^2.0.0",
     "normalize.css": "^4.0.0",
-    "react": "^15.0.0",
+    "react": "15.2.1",
     "react-bootstrap": "^0.29.4",
-    "react-dom": "^15.0.0",
+    "react-dom": "15.2.1",
     "uuid-js": "^0.7.5"
   }
 }
