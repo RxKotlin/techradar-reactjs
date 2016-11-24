@@ -4,3 +4,9 @@
 
 ![Example](./screenshot/eg1.png)
 
+1. `brew install node`, recommend node version >= 7.0
+2. `npm install -g yo`
+3. `npm install -g generator-react-webpack`
+4. `npm install`
+5. `npm start`
+
