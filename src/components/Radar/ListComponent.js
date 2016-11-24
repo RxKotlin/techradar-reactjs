@@ -11,10 +11,13 @@ class ListComponent extends React.Component {
   constructor(props) {
     super();
     this.state = {items: props.items}
+    this.title = props.title;
   }
 
   render() {
     return (
+        <div>
+        {this.title}
         <ul>
         {
           this.state.items
@@ -23,6 +26,7 @@ class ListComponent extends React.Component {
             })
         }
         </ul>
+        </div>
     );
   }
 }

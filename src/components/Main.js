@@ -13,12 +13,12 @@ var UUID = require('uuid-js');
 class AppComponent extends React.Component {
   constructor() {
     super();
-    this.state = {page: 'list', radius: 400, arr: []};
+    this.state = {page: 'list', radius: 300, arr: []};
     this.screen2Cartesian = this.screen2Cartesian.bind(this);
   }
 
   navigateToRadarPage() {
-    this.setState({page: 'create', radius: 400, arr:[]});
+    this.setState({page: 'create', radius: 300, arr:[]});
   }
 
   render() {
@@ -42,10 +42,10 @@ class AppComponent extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col-md-4">
-              <ListComponent items={items2nd} key={`${UUID.create().toString()}`}/>
+              <ListComponent title="Techniques" items={items2nd} key={`${UUID.create().toString()}`}/>
             </div>
             <div className="col-md-4 col-md-offset-4">
-              <ListComponent items={items1st} key={`${UUID.create().toString()}`}/>
+              <ListComponent title="Tools" items={items1st} key={`${UUID.create().toString()}`}/>
             </div>
           </div>
           <div className="row">
@@ -56,10 +56,10 @@ class AppComponent extends React.Component {
           </div>
           <div className="row">
             <div className="col-md-4">
-              <ListComponent items={items3rd} key={`${UUID.create().toString()}`}/>
+              <ListComponent title="Platforms" items={items3rd} key={`${UUID.create().toString()}`}/>
             </div>
             <div className="col-md-4 col-md-offset-4">
-              <ListComponent items={items4th} key={`${UUID.create().toString()}`}/>
+              <ListComponent title="Languages & Frameworks" items={items4th} key={`${UUID.create().toString()}`}/>
             </div>
           </div>
         </div>
