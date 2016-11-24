@@ -13,7 +13,7 @@ var UUID = require('uuid-js');
 class AppComponent extends React.Component {
   constructor() {
     super();
-    this.state = {page: 'list', radius: 300, arr: []};
+    this.state = {page: 'create', radius: 300, arr: []};
     this.screen2Cartesian = this.screen2Cartesian.bind(this);
   }
 
